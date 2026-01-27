@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # =========================
 # Load Data
@@ -30,6 +31,19 @@ print(group["Salary"].mean())
 
 print("\nNumber of employees per department:")
 print(group["EmployeeID"].count())
+sal_dep_vz=group["Salary"].mean()
+#plt.barh(sal_dep_vz.index,sal_dep_vz.values)
+#plt.title("Average salary per department")
+#plt.xlabel("Salary")
+#plt.ylabel("Department")
+#plt.show()
+
+emp_vz=group["EmployeeID"].count()
+plt.bar(emp_vz.index,emp_vz.values)
+plt.title("NO of employee in department")
+plt.xlabel("Department")
+plt.ylabel("no of employeee")
+plt.show()
 
 # =========================
 # Salary Analysis
@@ -37,7 +51,11 @@ print(group["EmployeeID"].count())
 highest_paid_index = df["Salary"].idxmax()
 print("\nHighest paid employee:")
 print(df.loc[highest_paid_index, ["Name", "Salary"]])
-
+highest_paid_sal_vz=df["Salary"]
+highest_paid_name_vz=df["Name"]
+#print(highest_paid_name_vz,highest_paid_sal_vz)
+#plt.barh(highest_paid_name_vz.values,highest_paid_sal_vz.values)
+#plt.show()
 avg_salary = df["Salary"].mean()
 print("\nEmployees earning above average salary:")
 print(df[df["Salary"] > avg_salary][["Name", "Salary"]])
@@ -89,3 +107,9 @@ most_experienced_dept = total_experience_by_dept.idxmax()
 
 print("\nWhich department has the most experienced staff?")
 print(most_experienced_dept)
+#plt.hist(df["Salary"], bins=10 ,edgecolor="black")
+#plt.title("Salary Distribution")
+#plt.xlabel("Salary")
+#plt.ylabel("Frequency")
+
+#plt.show()
